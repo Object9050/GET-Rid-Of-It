@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'get-Rid-Of-It';
+  title = 'GET-Rid-Of-It';
 }
