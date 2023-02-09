@@ -1,0 +1,52 @@
+[
+    {
+      "id": "1",
+      "name": "old shirt",
+      "reasonForRemoval": "outdated",
+      "photoUrl": "https://example.com/old-shirt.jpg",
+      "age": 5,
+      "comments": "",
+      "dateRemoved": "2022-01-01",
+      "removalMethod": "donated"
+    },
+    {
+      "id": "2",
+      "name": "broken lamp",
+      "reasonForRemoval": "broken",
+      "photoUrl": "https://example.com/broken-lamp.jpg",
+      "age": 2,
+      "comments": "",
+      "dateRemoved": "2022-02-01",
+      "removalMethod": "trashed"
+    },
+    {
+      "id": "3",
+      "name": "worn out shoes",
+      "reasonForRemoval": "worn out",
+      "photoUrl": "https://example.com/worn-out-shoes.jpg",
+      "age": 3,
+      "comments": "",
+      "dateRemoved": "2022-03-01",
+      "removalMethod": "donated"
+    },
+    {
+      "id": "4",
+      "name": "old phone",
+      "reasonForRemoval": "upgraded",
+      "photoUrl": "https://example.com/old-phone.jpg",
+      "age": 4,
+      "comments": "",
+      "dateRemoved": "2022-04-01",
+      "removalMethod": "recycled"
+    },
+    {
+      "id": "5",
+      "name": "outdated computer",
+      "reasonForRemoval": "outdated",
+      "photoUrl": "https://example.com/outdated-computer.jpg",
+      "age": 5,
+      "comments": "",
+      "dateRemoved": "2022-05-01",
+      "removalMethod": "sold"
+    }
+  ]
