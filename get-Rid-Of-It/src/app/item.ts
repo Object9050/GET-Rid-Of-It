@@ -10,9 +10,9 @@ export interface Item {
   }
   
  export enum RemovalMethod {
-    Donated = "donated",
+    Donated = "gespendet",
     Recycled = "recycled",
-    Sold = "sold",
-    Trashed = "trashed",
+    Sold = "verkauft",
+    Trashed = "entsorgt",
   }
   

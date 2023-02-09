@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
-const items = [
+const data = {
+  "items": [
     {
       "id": "1",
       "name": "old shirt",
@@ -55,46 +56,77 @@ const items = [
       "dateRemoved": "2022-05-01",
       "removalMethod": "sold"
     }
-  ];
+  ],
+  "highscore": [
+    {//macht so noch keinen Sinn
+      "month": "February",
+      "date": "2022-12-01",
+      "score": 100 
+    }
+  ]
+};
 
 /**
  * Routen
  */
 
 // Liefert alle Gegenstände
-  app.get('/api/items', (req, res) => {
-res.send(items);
-});
-
-// Fügt einen Gegenstand hinzu
-app.post('/api/items', (req, res) => {
-let item = req.body;
-items.push(item);
-res.send(item);
+app.get('/api/items', (req, res) => {
+  res.status(200).send(data.items);
 });
 
 // Anzeigen eines Gegenstandes anhand der ID
 app.get('/api/items/:id', (req, res) => {
   let itemId = req.params.id;
-  let item = items.find(item => item.id === itemId);
-  res.send(item);
+  let item = data.items.find(item => item.id === itemId);
+  if (!item) {
+    res.status(404).send("Gegenstand nicht gefunden")
+  } 
+  else {
+    res.status(200).send(item)
+  }
+});
+
+// Fügt einen Gegenstand hinzu
+app.post('/api/items', (req, res) => {
+  let item = req.body;
+  data.items.push(item);
+  res.status(201).send(item);
 });
 
 // Ändert einen Gegenstand
 app.put('/api/items/:id', (req, res) => {
   let itemId = req.params.id;
-  let itemIndex = items.findIndex(item => item.id === itemId);
+  let itemIndex = data.items.findIndex(item => item.id === itemId);
   let updatedItem = req.body;
-  items[itemIndex] = updatedItem;
-  res.send(updatedItem);
+  if (itemIndex === -1) {
+    res.status(404).send("Gegenstand nicht gefunden")
+  }
+  else {
+    // Festlegen der ID auf bestehende ID, falls geändertes Objekt keine ID enthält.
+    updatedItem.id = data.items[itemIndex].id
+    data.items[itemIndex] = updatedItem;
+    res.status(200).send(updatedItem);
+  }
 });
 
 // Löscht einen Gegenstand
 app.delete('/api/items/:id', (req, res) => {
   let itemId = req.params.id;
-  let itemIndex = items.findIndex(item => item.id === itemId);
-  items.splice(itemIndex, 1);
-  res.sendStatus(204);
+  let itemIndex = data.items.findIndex(item => item.id === itemId);
+  if (itemIndex === -1) {
+    res.status(404).send("Gegenstand nicht gefunden");
+  }
+  else {
+    data.items.splice(itemIndex, 1);
+    res.sendStatus(204);
+  }
+});
+
+// Löscht ALLE Gegenstände!
+app.delete('/api/items', (req, res) => {
+  data.items = [];
+  res.status(204).send("All data deleted.")
 });
 
 // Öffnet den Server für Anfragen auf Port 3000
