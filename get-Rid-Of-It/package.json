@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:server": "node server.js",
+    "start:client": "ng serve",
+    "startAll": "concurrently --kill-others-on-fail \"npm run start:server\" \"npm run start:client\""
   },
   "private": true,
   "dependencies": {
