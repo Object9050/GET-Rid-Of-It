@@ -69,6 +69,16 @@
 			"comments": "",
 			"dateRemoved": "2022-07-01",
 			"removalMethod": "entsorgt"
+		},
+		{
+			"id": "8",
+			"name": "Example Item",
+			"reasonForRemoval": "Not needed anymore",
+			"photoUrl": "https://example.com/item6.jpg",
+			"age": 5,
+			"comments": "This is an example of a mockup item.",
+			"dateRemoved": "2022-12-31",
+			"removalMethod": "Trashed"
 		}
 	],
 	"motivationalQuotes": [

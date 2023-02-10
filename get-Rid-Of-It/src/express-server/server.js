@@ -5,7 +5,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');// nötig um req.body lesen zu können (Z.B. bei POST-Anfragen)
 const fs = require('fs'); //nötig, um auf Dateisystem (filesystem) zugreifen zu können
-const { json } = require('express/lib/response');
+const jsonFile = require('./serverJsonHelper');// ausgelagerte fs.read und fs.writeFile 
+//const { json } = require('express/lib/response');// <-- wie kam das hier hin?
+
 
 // Express Server erstellen
 const app = express();
@@ -17,45 +19,59 @@ app.listen(3001, () => {
   console.log('Server gestartet und lauscht auf Port 3001');
   });
 
-// Daten aus JSON Datei einlesen
-var jsonData = {};
-const pathToJson = "./src/data/data.json"
-
-fs.readFile(pathToJson, (error, data) => {
-  if (error) {
-    throw error;
-  }
-  jsonData = JSON.parse(data);
-  console.log("JSON Daten erfolgreich eingelesen");
-});
-
-
 /**
  * Routen
 */
 // Liefert alle Gegenstände
 app.get('/api/items', (req, res) => {
-  res.status(200).send(jsonData.items);
-});
+  jsonFile
+    .readJsonFile()
+    .then((jsonData) => {
+      res.status(200).send(jsonData.items)
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('JSON-Datei nicht lesbar');
+    });
+  });
 
 // Anzeigen eines Gegenstandes anhand der ID
 app.get('/api/items/:id', (req, res) => {
-  let itemId = req.params.id;
-  let item = jsonData.items.find(item => item.id === itemId);
-  if (!item) {
-    res.status(404).send("Gegenstand nicht gefunden")
-  } 
-  else {
-    res.status(200).send(item)
-  }
+  const itemId = req.params.id;
+  jsonFile
+    .readJsonFile()
+    .then((jsonData) => {
+      let item = jsonData.items.find(item => item.id === itemId);
+      if (!item) {
+        return res.status(404).send(`Gegenstand mit ID ${itemId} nicht gefunden`)
+      } 
+      else {
+        res.status(200).send(item)
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Fehler beim Lesen der Datei')
+    });
 });
 
 // Fügt einen Gegenstand hinzu
 app.post('/api/items', (req, res) => {
-  let item = req.body;
-  jsonData.items.push(item);
-  res.status(201).send(item);
-});
+  const item = req.body;
+  jsonFile
+    .readJsonFile()
+    .then((jsonData) => {
+      jsonData.items.push(item)
+      return jsonFile.writeJsonFile(jsonData);
+    })
+    .then(() => {
+    res.status(201).send(item);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Gegenstand konnte nicht hinzugefügt werden");
+    });
+  });
 
 // Ändert einen Gegenstand
 app.put('/api/items/:id', (req, res) => {
