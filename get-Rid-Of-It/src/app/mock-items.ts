@@ -1,5 +1,5 @@
-import { Item } from './item';
-import { RemovalMethod } from './item';
+import { Item } from './item.model';
+import { RemovalMethod } from './item.model';
 
 export const ITEMS: Item[] = [
     {

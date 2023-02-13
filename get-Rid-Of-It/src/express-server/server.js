@@ -11,7 +11,7 @@ const jsonFile = require('./serverJsonHelper');// ausgelagerte fs.read und fs.wr
 
 // Express Server erstellen
 const app = express();
-
+// Nutzung von bodyParser anweisen
 app.use(bodyParser.json());
 
 // Öffnet den Server für Anfragen auf Port 3000
