@@ -15,8 +15,8 @@ const app = express();
 app.use(bodyParser.json());
 
 // Öffnet den Server für Anfragen auf Port 3000
-app.listen(3001, () => {
-  console.log('Server gestartet und lauscht auf Port 3001');
+app.listen(3000, () => {
+  console.log('Server gestartet und lauscht auf Port 3000');
   });
 
 /**
