@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Item } from './item.model';
-import { Observable } from 'rxjs';
+import { Observable, tap, catchError } from 'rxjs';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { Observable } from 'rxjs';
 export class ItemService {
   private itemsUrl = 'http://localhost:3000/api/items';
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, 
+    private messageService: MessageService) { }
   
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,8 +19,18 @@ export class ItemService {
 
   /** GET: get all items from the server */
   getItems(): Observable<Item[]> {
+    this.messageService.add('ItemService: fetched items')
     return this.http.get<Item[]>(this.itemsUrl);
   }
+
+  /** GET item by id. Will 404 if id not found */
+  // getItem(id: number): Observable<Item> {
+  //   const url = `${this.itemsUrl}/${id}`;
+  //   return this.http.get<Item>(url).pipe(
+  //     tap(_ => this.log(`fetched hero id=${id}`)),
+  //     catchError(this.handleError<Hero>(`getHero id=${id}`))
+  //   );
+  // }
 
   /** POST: add a new item to the server */
   addItem(item: Item): Observable<Item> {
