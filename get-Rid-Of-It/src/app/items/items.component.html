@@ -1,6 +1,23 @@
-<!-- Ansicht für die Liste aller Gegenstände -->
 <h2>Von welchem Gegenstand möchtest du dich heute trennen?</h2>
-<div class="container mt-5">
+<ul class="items">
+  <li *ngFor="let item of items">
+    <button [class.selected]="item === selectedItem"type="button" (click)="onSelect(item)">
+      <span class="badge">{{item.id}}</span>
+      <span class="name">{{item.name}}</span>
+    </button>
+  </li>
+</ul>
+
+<div *ngIf="selectedItem">
+  <h2>Detailansicht {{selectedItem.name | uppercase}}</h2>
+  <div>id: {{selectedItem.id}}</div>
+  <div>
+    <label for="item-name">Gegenstand: </label>
+    <input id="item-name" [(ngModel)]="selectedItem.name" placeholder="name">
+  </div>
+</div>
+<!-- View for listing all items -->
+<!-- <div class="container mt-5">
     <h1 class="text-center">Gegenstandsliste</h1>
     <table class="table table-striped mt-3">
       <thead>
@@ -25,11 +42,34 @@
       </tbody>
     </table>
     <button class="btn btn-success mt-3" (click)="addNewItem()">Gegenstand hinzufügen</button>
-  </div>
+  </div> -->
 
-<!-- Formular zum Ändern der Daten eines Gegenstandes -->
-<form *ngIf="selectedItem" class="mt-5">
+<!-- Form for adding a new item
+<form *ngIf="addMode" class="mt-5">
+  <h2>Neuen Gegenstand hinzufügen</h2>
+  <div class="form-group">
+    <label for="nameInput">Name</label>
+    <input type="text" class="form-control" id="nameInput" [(ngModel)]="newItem.name">
+  </div>
+  <div class="form-group">
+    <label for="ageInput">Alter</label>
+    <input type="number" class="form-control" id="ageInput" [(ngModel)]="newItem.age">
+  </div>
+  <div class="form-group">
+    <label for="commentsInput">Kommentar</label>
+    <input type="text" class="form-control" id="commentsInput" [(ngModel)]="newItem.comments">
+  </div>
+  <button class="btn btn-primary" (click)="addItem()">Hinzufügen</button>
+  <button class="btn btn-secondary ml-3" (click)="cancelAdd()">Abbrechen</button>
+</form> -->
+
+<!-- Form to update an item -->
+<!-- <form *ngIf="selectedItem" class="mt-5">
   <h2>Gegenstand bearbeiten</h2>
+  <div class="form-group">
+    <label for="nameInput">ID</label>
+    <input type="text" class="form-control" id="IdInput" [(ngModel)]="selectedItem.id" placeholder="ID">
+  </div>
   <div class="form-group">
     <label for="nameInput">Name</label>
     <input type="text" class="form-control" id="nameInput" [(ngModel)]="selectedItem.name" placeholder="name">
@@ -44,4 +84,4 @@
   </div>
   <button class="btn btn-primary" (click)="updateItem(selectedItem)">Änderungen speichern</button>
   <button class="btn btn-secondary ml-3" (click)="clearSelection()">Abbrechen</button>
-</form>
+</form> -->

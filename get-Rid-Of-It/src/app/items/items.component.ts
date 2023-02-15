@@ -13,9 +13,13 @@ import { Item } from '../item.model';
 export class ItemsComponent implements OnInit {
   items: Item[] = [];
   newItem: any = {};
-  @Input() selectedItem?: any;
+  selectedItem?: Item;
 
   constructor(private itemService: ItemService) { }
+
+  onSelect(item: Item): void {
+    this.selectedItem = item;
+  }
 
   ngOnInit(): void {
     this.getItems();
@@ -23,7 +27,7 @@ export class ItemsComponent implements OnInit {
 
   getItems(): void {
     this.itemService.getItems()
-      .subscribe(items => this.items = items);
+      .subscribe(itemsFromServer => this.items = itemsFromServer);
   }
 
   addNewItem() {
@@ -39,24 +43,20 @@ export class ItemsComponent implements OnInit {
   
   updateItem(item: Item): void {
     this.selectedItem = item;
-    const updatedItem: Item = {
-      id: this.selectedItem.id,
-      name: this.selectedItem.name,
-      age: this.selectedItem.age,
-      comments: this.selectedItem.comments,
-      reasonForRemoval: '',
-      photoUrl: '',
-      dateRemoved: new Date
-      // removalMethod: Donated
-    };
+    this.itemService.editItem(item).subscribe({
+      next: updatedItem => {
+        this.items = this.items.map(i => i.id === updatedItem.id ? updatedItem : i);
+      },
+      error: err => {
+        console.error('An error occurred: ', err);
+      },
+      complete: () => {
+        console.log('Edit item completed.');
+      }
+    });
+  }
   
-    this.itemService.editItem(updatedItem)
-      .subscribe(() => {
-        this.getItems();
-      });
-  }
-
-  clearSelection() {
-    this.selectedItem = null;
-  }
+  // clearSelection() {
+  //   this.selectedItem = null;
+  // }
 }
