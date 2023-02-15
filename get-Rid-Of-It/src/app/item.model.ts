@@ -6,7 +6,7 @@ export interface Item {
     age: number;
     comments: string;
     dateRemoved: Date;
-    removalMethod: RemovalMethod;
+    // removalMethod: RemovalMethod;
   }
   
  export enum RemovalMethod {

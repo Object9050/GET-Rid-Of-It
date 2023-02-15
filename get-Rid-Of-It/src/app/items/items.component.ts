@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 // import { Item } from '../item';
 import { ItemService } from '../item.service';
 import { Item } from '../item.model';
@@ -13,6 +13,7 @@ import { Item } from '../item.model';
 export class ItemsComponent implements OnInit {
   items: Item[] = [];
   newItem: any = {};
+  @Input() selectedItem?: any;
 
   constructor(private itemService: ItemService) { }
 
@@ -30,9 +31,32 @@ export class ItemsComponent implements OnInit {
   }
 
   deleteItem(item: Item): void {
-    this.itemService.deleteItem(item.id)/* .subscribe(() => {
-      this.items = this.items.filter(i => i !== item);
-    }); */
+    this.itemService.deleteItem(item.id)
+      .subscribe(() => {
+        this.items = this.items.filter(i => i !== item);
+    });
   }
   
+  updateItem(item: Item): void {
+    this.selectedItem = item;
+    const updatedItem: Item = {
+      id: this.selectedItem.id,
+      name: this.selectedItem.name,
+      age: this.selectedItem.age,
+      comments: this.selectedItem.comments,
+      reasonForRemoval: '',
+      photoUrl: '',
+      dateRemoved: new Date
+      // removalMethod: Donated
+    };
+  
+    this.itemService.editItem(updatedItem)
+      .subscribe(() => {
+        this.getItems();
+      });
+  }
+
+  clearSelection() {
+    this.selectedItem = null;
+  }
 }

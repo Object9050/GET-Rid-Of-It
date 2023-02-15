@@ -28,6 +28,7 @@ app.get('/api/items', (req, res) => {
     .readJsonFile()
     .then((jsonData) => {
       res.status(200).send(jsonData.items)
+      console.log("Daten erfolgreich gelesen");
     })
     .catch((err) => {
       console.error(err);
@@ -88,7 +89,9 @@ app.put('/api/items/:id', (req, res) => {
         // Festlegen der ID auf bestehende ID, falls geändertes Objekt keine ID enthält.
         updatedItem.id = jsonData.items[itemIndex].id
         jsonData.items[itemIndex] = updatedItem;
+        console.log(updatedItem);
         return jsonFile.writeJsonFile(jsonData);
+        
       }
     })
     .then(() => {

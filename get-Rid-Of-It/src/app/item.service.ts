@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Item } from './item.model';
 import { Observable } from 'rxjs';
 
@@ -21,17 +21,16 @@ export class ItemService {
     });
   }
 
-  updateItem(item: any) {
-    this.http.put(`${this.itemsUrl}/${item.id}`, item).subscribe(() => {
-      this.getItems();
-    });
+  editItem(item: Item): Observable<Item> {
+    return this.http.put<Item>(`${this.itemsUrl}/${item.id}`, item);
   }
 
-  deleteItem(id: any): void {
-    this.http.delete<void>(`${this.itemsUrl}/${id}`)
-    .subscribe(() => {
-      this.getItems();
-    });
+  // httpOptions = {
+  //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  // };
+  
+  deleteItem(id: any): Observable<void> {
+    return this.http.delete<void>(`${this.itemsUrl}/${id}`);
   }
   
   
