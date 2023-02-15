@@ -1,9 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { Item } from '../item';
 import { ItemService } from '../item.service';
 import { Item } from '../item.model';
-
-// import { ITEMS } from '../mock-items';
 
 @Component({
   selector: 'app-items',
@@ -55,8 +52,4 @@ export class ItemsComponent implements OnInit {
       }
     });
   }
-  
-  // clearSelection() {
-  //   this.selectedItem = null;
-  // }
 }
