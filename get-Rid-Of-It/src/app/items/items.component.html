@@ -7,15 +7,7 @@
     </button>
   </li>
 </ul>
-
-<div *ngIf="selectedItem">
-  <h2>Detailansicht {{selectedItem.name | uppercase}}</h2>
-  <div>id: {{selectedItem.id}}</div>
-  <div>
-    <label for="item-name">Gegenstand: </label>
-    <input id="item-name" [(ngModel)]="selectedItem.name" placeholder="name">
-  </div>
-</div>
+<app-item-detail [item]="selectedItem"></app-item-detail>
 <!-- View for listing all items -->
 <!-- <div class="container mt-5">
     <h1 class="text-center">Gegenstandsliste</h1>
