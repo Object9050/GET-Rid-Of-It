@@ -42,10 +42,12 @@ export class ItemService {
     
   /** POST: add a new item to the server */
   addItem(item: Item): Observable<Item> {
+    // const items = this.getItems();
+    // item.id = this.genId(items);
     return this.http.post<Item>(this.itemsUrl, item, this.httpOptions)
     .pipe(
-      tap(_ => this.log(`Added item id=${item.id}`)),
-      catchError(this.handleError<any>('addItem'))
+      tap((newItem: Item) => this.log(`Added item w/ id: ${newItem.id}`)),
+      catchError(this.handleError<Item>('addItem'))
     );
   }
   
@@ -62,7 +64,13 @@ export class ItemService {
   deleteItem(id: string): Observable<Item> {
     return this.http.delete<Item>(`${this.itemsUrl}/${id}`, this.httpOptions);
   }
-         
+  
+  // /** Generate an ID for each new Item */
+  // genId(items: Item[]): string {
+  //   return items.length > 0 ? Math.max(...items.map(item => item.id)) + 1 : 1;
+  // }
+  
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

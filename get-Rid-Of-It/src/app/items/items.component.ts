@@ -25,29 +25,31 @@ export class ItemsComponent implements OnInit {
       .subscribe(itemsFromServer => this.items = itemsFromServer);
   }
 
-  addNewItem() {
-    this.itemService.addItem(this.newItem);
-  }
-
-  deleteItem(item: Item): void {
-    this.itemService.deleteItem(item.id)
-      .subscribe(() => {
-        this.getItems();
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    const id = this.genId(this.items);
+    this.itemService.addItem({ id, name } as Item)
+    .subscribe(newItem => {
+      this.items.push(newItem);
     });
   }
-  
-  // updateItem(item: Item): void {
-  //   this.selectedItem = item;
-  //   this.itemService.updateItem(item).subscribe({
-  //     next: updatedItem => {
-  //       this.items = this.items.map(i => i.id === updatedItem.id ? updatedItem : i);
-  //     },
-  //     error: err => {
-  //       console.error('An error occurred: ', err);
-  //     },
-  //     complete: () => {
-  //       console.log('Edit item completed.');
-  //     }
+
+  /** Generate an ID for each new Item */
+  genId(items: Item[]): string {
+    return items.length > 0 ? (Math.max(...items.map(item => +item.id)) + 1).toString() : '1';
+}
+
+/** OLD-AS-NUMBER // Generate an ID for each new Item */
+  // genId(items: Item[]): number {
+  //   return items.length > 0 ? Math.max(...items.map(item => item.id)) + 1 : 1;
+  // }
+
+
+  // deleteItem(item: Item): void {
+  //   this.itemService.deleteItem(item.id)
+  //     .subscribe(() => {
+  //       this.getItems();
   //   });
   // }
 }

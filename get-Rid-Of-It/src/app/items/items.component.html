@@ -1,5 +1,14 @@
 <!-- View for listing all items -->
-<h2>Von welchem Gegenstand möchtest du dich heute trennen?</h2>
+<h2>What do you want to GET-rid-of today?</h2>
+<div>
+  <label for="new-item">Item name: </label>
+  <input id="new-item" #itemName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(itemName.value); itemName.value=''">
+    Liberate item
+  </button>
+</div>
 <ul class="items">
   <li *ngFor="let item of items">
     <a routerLink="/detail/{{item.id}}">
