@@ -37,7 +37,7 @@ export class ItemsComponent implements OnInit {
   deleteItem(item: Item): void {
     this.itemService.deleteItem(item.id)
       .subscribe(() => {
-        this.items = this.items.filter(i => i !== item);
+        this.getItems();
     });
   }
   

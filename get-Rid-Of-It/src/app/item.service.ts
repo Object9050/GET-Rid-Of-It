@@ -19,7 +19,7 @@ export class ItemService {
 
   /** GET: get all items from the server */
   getItems(): Observable<Item[]> {
-    this.messageService.add('ItemService: fetched items')
+    this.messageService.add('ItemService: Fetched items')
     return this.http.get<Item[]>(this.itemsUrl);
   }
 
@@ -42,7 +42,7 @@ export class ItemService {
     return this.http.put<Item>(`${this.itemsUrl}/${item.id}`, item, this.httpOptions);
   }
 
-  /** DELETE: delete an from the server */
+  /** DELETE: delete an item from the server */
   deleteItem(id: string): Observable<Item> {
     return this.http.delete<Item>(`${this.itemsUrl}/${id}`, this.httpOptions);
   }
