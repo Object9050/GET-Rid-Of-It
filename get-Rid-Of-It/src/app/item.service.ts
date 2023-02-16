@@ -43,6 +43,10 @@ export class ItemService {
   /** POST: add a new item to the server */
   addItem(item: Item): Observable<Item> {
     return this.http.post<Item>(this.itemsUrl, item, this.httpOptions)
+    .pipe(
+      tap(_ => this.log(`Added item id=${item.id}`)),
+      catchError(this.handleError<any>('addItem'))
+    );
   }
   
   /** PUT: update an item on the server */

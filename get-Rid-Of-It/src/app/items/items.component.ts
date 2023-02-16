@@ -36,18 +36,18 @@ export class ItemsComponent implements OnInit {
     });
   }
   
-  updateItem(item: Item): void {
-    this.selectedItem = item;
-    this.itemService.updateItem(item).subscribe({
-      next: updatedItem => {
-        this.items = this.items.map(i => i.id === updatedItem.id ? updatedItem : i);
-      },
-      error: err => {
-        console.error('An error occurred: ', err);
-      },
-      complete: () => {
-        console.log('Edit item completed.');
-      }
-    });
-  }
+  // updateItem(item: Item): void {
+  //   this.selectedItem = item;
+  //   this.itemService.updateItem(item).subscribe({
+  //     next: updatedItem => {
+  //       this.items = this.items.map(i => i.id === updatedItem.id ? updatedItem : i);
+  //     },
+  //     error: err => {
+  //       console.error('An error occurred: ', err);
+  //     },
+  //     complete: () => {
+  //       console.log('Edit item completed.');
+  //     }
+  //   });
+  // }
 }
