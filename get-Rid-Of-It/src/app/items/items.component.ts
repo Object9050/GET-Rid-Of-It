@@ -40,16 +40,16 @@ export class ItemsComponent implements OnInit {
     return items.length > 0 ? (Math.max(...items.map(item => +item.id)) + 1).toString() : '1';
 }
 
-/** OLD-AS-NUMBER // Generate an ID for each new Item */
-  // genId(items: Item[]): number {
-  //   return items.length > 0 ? Math.max(...items.map(item => item.id)) + 1 : 1;
-  // }
+  /** OLD-AS-NUMBER // Generate an ID for each new Item */
+    // genId(items: Item[]): number {
+    //   return items.length > 0 ? Math.max(...items.map(item => item.id)) + 1 : 1;
+    // }
 
-
-  // deleteItem(item: Item): void {
-  //   this.itemService.deleteItem(item.id)
-  //     .subscribe(() => {
-  //       this.getItems();
-  //   });
-  // }
+  /** deleteItems subscribes to the DELETE request of ItemService */
+  deleteItem(item: Item): void {
+    this.itemService.deleteItem(item.id)
+      .subscribe(() => {
+        this.getItems();
+    });
+}
 }

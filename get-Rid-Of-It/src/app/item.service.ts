@@ -62,15 +62,13 @@ export class ItemService {
   
   /** DELETE: delete an item from the server */
   deleteItem(id: string): Observable<Item> {
-    return this.http.delete<Item>(`${this.itemsUrl}/${id}`, this.httpOptions);
+    return this.http.delete<Item>(`${this.itemsUrl}/${id}`, this.httpOptions)
+    .pipe(
+      tap(_ => this.log(`Deleted item id: ${id}`)),
+      catchError(this.handleError<Item>('deleteItem'))
+    );
   }
   
-  // /** Generate an ID for each new Item */
-  // genId(items: Item[]): string {
-  //   return items.length > 0 ? Math.max(...items.map(item => item.id)) + 1 : 1;
-  // }
-  
-
   /**
    * Handle Http operation that failed.
    * Let the app continue.

@@ -1,7 +1,7 @@
 <!-- View for listing all items -->
 <h2>What do you want to GET-rid-of today?</h2>
 <div>
-  <label for="new-item">Item name: </label>
+  <label for="new-item">Liberator name: </label>
   <input id="new-item" #itemName />
 
   <!-- (click) passes input value to add() and then clears the input -->
@@ -14,6 +14,8 @@
     <a routerLink="/detail/{{item.id}}">
       <span class="badge">{{item.id}}</span> {{item.name}}
     </a>
+    <button type="button" class="delete" title="delete item"
+    (click)="deleteItem(item)">x</button>
   </li>
 </ul>
 <!-- View for listing all items -->
