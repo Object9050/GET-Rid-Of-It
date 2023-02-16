@@ -11,11 +11,10 @@ import { ItemService } from '../item.service';
   styleUrls: ['./item-detail.component.css']
 })
 export class ItemDetailComponent {
-  @Input() item?: Item;
+  item?: Item;
 
   constructor(
     private route: ActivatedRoute,
-    private heroService: ItemService,
     private location: Location,
     private itemService: ItemService
   ) { }
@@ -29,4 +28,16 @@ export class ItemDetailComponent {
     this.itemService.getItem(id)
       .subscribe(itemFromServer => this.item = itemFromServer);
   }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  save(): void {
+    if (this.item) {
+      this.itemService.updateItem(this.item)
+        .subscribe(() => this.goBack());
+    }
+  }
+
 }

@@ -38,7 +38,7 @@ export class ItemsComponent implements OnInit {
   
   updateItem(item: Item): void {
     this.selectedItem = item;
-    this.itemService.editItem(item).subscribe({
+    this.itemService.updateItem(item).subscribe({
       next: updatedItem => {
         this.items = this.items.map(i => i.id === updatedItem.id ? updatedItem : i);
       },
