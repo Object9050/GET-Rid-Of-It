@@ -24,13 +24,14 @@ export class ItemService {
   }
 
   /** GET item by id. Will 404 if id not found */
-  // getItem(id: number): Observable<Item> {
-  //   const url = `${this.itemsUrl}/${id}`;
-  //   return this.http.get<Item>(url).pipe(
-  //     tap(_ => this.log(`fetched hero id=${id}`)),
-  //     catchError(this.handleError<Hero>(`getHero id=${id}`))
-  //   );
-  // }
+  getItem(id: number): Observable<Item> {
+    const url = `${this.itemsUrl}/${id}`;
+    this.messageService.add(`ItemService: Fetched item id: ${id}`);
+    return this.http.get<Item>(url).pipe(
+      // tap(_ => this.log(`fetched hero id=${id}`)),
+      // catchError(this.handleError<Hero>(`getHero id=${id}`))
+    );
+  }
 
   /** POST: add a new item to the server */
   addItem(item: Item): Observable<Item> {

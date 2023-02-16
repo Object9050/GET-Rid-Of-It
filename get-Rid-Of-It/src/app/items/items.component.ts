@@ -20,11 +20,6 @@ export class ItemsComponent implements OnInit {
     this.getItems();
   }
 
-  onSelect(item: Item): void {
-    this.selectedItem = item;
-    this.messageService.add(`ItemsComponent: Selected item id: ${item.id}`);
-  }
-
   getItems(): void {
     this.itemService.getItems()
       .subscribe(itemsFromServer => this.items = itemsFromServer);

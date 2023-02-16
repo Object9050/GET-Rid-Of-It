@@ -2,13 +2,11 @@
 <h2>Von welchem Gegenstand möchtest du dich heute trennen?</h2>
 <ul class="items">
   <li *ngFor="let item of items">
-    <button [class.selected]="item === selectedItem"type="button" (click)="onSelect(item)">
-      <span class="badge">{{item.id}}</span>
-      <span class="name">{{item.name}}</span>
-    </button>
+    <a routerLink="/detail/{{item.id}}">
+      <span class="badge">{{item.id}}</span> {{item.name}}
+    </a>
   </li>
 </ul>
-<app-item-detail [item]="selectedItem"></app-item-detail>
 <!-- View for listing all items -->
 <!-- <div class="container mt-5">
     <h1 class="text-center">Gegenstandsliste</h1>
