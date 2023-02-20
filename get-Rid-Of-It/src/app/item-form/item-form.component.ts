@@ -15,7 +15,7 @@ export class ItemFormComponent {
   removalMethods = ['Donated', 'Recycled', 'Sold', 'Trashed'];
 
   // ID = this.itemsComponent.genId();
-  model = new Item('20', 'Dead Plant', 'It lived a short live full of empty watercans',
+  model = new Item('20', 'Dead Plant', 'It lived a short life full of empty watercans',
    0.2, 'Give me your plants if you hate them', this.removalMethods[1]);
 
   submitted = false;

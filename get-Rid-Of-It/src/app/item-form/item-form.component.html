@@ -1,15 +1,19 @@
 <!-- {{ model | json }} -->
+<h1>Liberate a new Item!</h1>
+<form #itemForm="ngForm"></form>
 <div class="form-group">
-  <label for="name">Liberator Name</label>
-  <input type="text" class="form-control" id="name"
-         required
-         [(ngModel)]="model.name" name="name">
+    <label for="name">Liberator Name</label>
+    <input type="text" class="form-control" id="name"
+            required
+            [(ngModel)]="model.name" name="name" #name="ngModel">
+        <div [hidden]="name.valid || name.pristine" 
+            class="alert alert-danger">Liberator Name is required</div>        
 </div>
 
 <div class="form-group">
-  <label for="reasonForRemoval">Reason for Liberation</label>
-  <input type="text"  class="form-control" id="reasonForRemoval"
-         [(ngModel)]="model.reasonForRemoval" name="reasonForRemoval">
+    <label for="reasonForRemoval">Reason for Liberation</label>
+    <input type="text"  class="form-control" id="reasonForRemoval"
+            [(ngModel)]="model.reasonForRemoval" name="reasonForRemoval">
 </div>
 
 <div class="form-group">
