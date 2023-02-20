@@ -1,0 +1,22 @@
+export class Item {
+    
+  constructor(
+    public id: string,
+    public name: string,
+    public reasonForRemoval: string,
+    public age: number,
+    public comments: string,
+    public removalMethod: string,
+    public photoUrl?: string,
+    public dateRemoved?: Date,
+    ) { }
+    
+  }
+  
+//  export enum RemovalMethod {
+//     Donated = "donated",
+//     Recycled = "recycled",
+//     Sold = "sold",
+//     Trashed = "trashed",
+//   }
+  
