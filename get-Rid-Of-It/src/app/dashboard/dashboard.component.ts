@@ -16,8 +16,11 @@ export class DashboardComponent implements OnInit {
     this.getItems();
   }
 
+  /** Get items from server and slice the list from the end -4 to
+   * show the last 4 items (the latest Liberators) in the list. 
+   */
   getItems(): void {
     this.itemService.getItems()
-      .subscribe(itemsFromServer => this.items = itemsFromServer.slice(0, 4));
+      .subscribe(itemsFromServer => this.items = itemsFromServer.slice(-4));
   }
 }

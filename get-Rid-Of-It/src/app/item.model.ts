@@ -2,17 +2,17 @@ export interface Item {
     id: string;
     name: string;
     reasonForRemoval: string;
-    photoUrl: string;
+    photoUrl?: string;
     age: number;
     comments: string;
-    dateRemoved: Date;
-    // removalMethod: RemovalMethod;
+    dateRemoved?: Date;
+    removalMethod: RemovalMethod;
   }
   
  export enum RemovalMethod {
-    Donated = "gespendet",
+    Donated = "donated",
     Recycled = "recycled",
-    Sold = "verkauft",
-    Trashed = "entsorgt",
+    Sold = "sold",
+    Trashed = "trashed",
   }
   

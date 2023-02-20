@@ -8,7 +8,7 @@
 			"age": 5,
 			"comments": "",
 			"dateRemoved": "2022-01-01",
-			"removalMethod": "gespendet"
+			"removalMethod": "donated"
 		},
 		{
 			"id": "2",
@@ -18,7 +18,7 @@
 			"age": 2,
 			"comments": "",
 			"dateRemoved": "2022-02-01",
-			"removalMethod": "entsorgt"
+			"removalMethod": "trashed"
 		},
 		{
 			"id": "3",
@@ -28,7 +28,7 @@
 			"age": 3,
 			"comments": "",
 			"dateRemoved": "2022-03-01",
-			"removalMethod": "gespendet"
+			"removalMethod": "donated"
 		},
 		{
 			"id": "4",
@@ -48,7 +48,7 @@
 			"age": 5,
 			"comments": "",
 			"dateRemoved": "2022-05-01",
-			"removalMethod": "verkauft"
+			"removalMethod": "sold"
 		},
 		{
 			"id": "6",
@@ -58,7 +58,7 @@
 			"age": 6,
 			"comments": "",
 			"dateRemoved": "2022-06-01",
-			"removalMethod": "gespendet"
+			"removalMethod": "donated"
 		},
 		{
 			"id": "7",
@@ -68,7 +68,7 @@
 			"age": 3,
 			"comments": "",
 			"dateRemoved": "2022-07-01",
-			"removalMethod": "entsorgt"
+			"removalMethod": "trashed"
 		},
 		{
 			"id": "8",
@@ -78,7 +78,7 @@
 			"age": 5,
 			"comments": "This is an example of a mockup item.",
 			"dateRemoved": "2022-12-31",
-			"removalMethod": "entsorgt"
+			"removalMethod": "trashed"
 		}
 	],
 	"motivationalQuotes": [
