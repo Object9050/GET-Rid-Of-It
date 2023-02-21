@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ItemClass } from '../item.model.class';
+// import { ItemClass } from '../item.model.class';
 import { Item, RemovalMethod } from '../item.model'
 import { ItemService } from '../item.service';
 
@@ -15,9 +15,9 @@ export class ItemFormComponent {
 
   constructor(private itemService: ItemService) { }
 
-  removalMethods = ['Donated', 'Recycled', 'Sold', 'Trashed'];
-  model = new ItemClass('', 'Dead Plant', 'It lived a short life full of empty watercans',
-   0.2, 'Give me your plants if you hate them', this.removalMethods[1]);
+  // removalMethods = ['Donated', 'Recycled', 'Sold', 'Trashed'];
+  // model = new ItemClass('', 'Dead Plant', 'It lived a short life full of empty watercans',
+  //  0.2, 'Give me your plants if you hate them', this.removalMethods[1]);
 
   removalMethods2 = Object.values(RemovalMethod);
   model2: Item = {

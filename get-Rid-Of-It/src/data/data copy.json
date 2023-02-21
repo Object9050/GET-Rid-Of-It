@@ -79,57 +79,65 @@
 			"comments": "This is an example of a mockup item.",
 			"dateRemoved": "2022-12-31",
 			"removalMethod": "trashed"
-		}
+		},
+		{
+            "id": "9",
+            "name": "Dead Plant",
+            "reasonForRemoval": "It lived a short life full of empty watercans",
+            "age": 0.2,
+            "comments": "Give me your plants if you hate them",
+            "removalMethod": "Recycled"
+        }
 	],
 	"motivationalQuotes": [
 		{
 			"id": 1,
-			"quote": "Lass los, was dich nicht glücklich macht.",
+			"quote": "Let go of what does not make you happy.",
 			"author": "Unbekannt"
 		},
 		{
 			"id": 2,
-			"quote": "Wir tragen oft viel unnötigen Ballast mit uns herum. Lass ihn los.",
+			"quote": "We often carry a lot of unnecessary burden with us. Let it go.",
 			"author": "Marie Kondo"
 		},
 		{
 			"id": 3,
-			"quote": "Je mehr Dinge du besitzt, desto mehr Dinge besitzen dich.",
+			"quote": "The more things you own, the more they own you.",
 			"author": "Chuck Palahniuk"
 		},
 		{
 			"id": 4,
-			"quote": "Wir sammeln oft Dinge an, weil wir hoffen, dass sie uns eines Tages glücklich machen werden. Aber das Glück liegt nicht in den Dingen, sondern in uns selbst.",
+			"quote": "We often collect things because we hope they will make us happy someday. But happiness does not lie in things, it lies within ourselves.",
 			"author": "Marc and Angel Chernoff"
 		},
 		{
 			"id": 5,
-			"quote": "Ein aufgeräumter Raum bedeutet auch einen aufgeräumten Verstand.",
+			"quote": "A tidy room means a tidy mind.",
 			"author": "Marie Kondo"
 		},
 		{
 			"id": 6,
-			"quote": "Entrümple dein Zuhause, entrümple dein Leben.",
+			"quote": "Tidy your space, transform your life.",
 			"author": "Marie Kondo"
 		},
 		{
 			"id": 7,
-			"quote": "Einfachheit ist das Geheimnis des Glücks.",
+			"quote": "Simplicity is the key to happiness.",
 			"author": "Lao Tzu"
 		},
 		{
 			"id": 8,
-			"quote": "Weniger ist oft mehr.",
+			"quote": "Less is often more.",
 			"author": "Ludwig Mies van der Rohe"
 		},
 		{
 			"id": 9,
-			"quote": "Wir brauchen oft weniger, als wir denken.",
+			"quote": "We often need less than we think.",
 			"author": "Henry David Thoreau"
 		},
 		{
 			"id": 10,
-			"quote": "Wir können nicht mehr hinzufügen, bis wir nicht mehr weggenommen haben.",
+			"quote": "We cannot add more until we have taken away what we no longer need.",
 			"author": "Lao Tzu"
 		}
 	],
