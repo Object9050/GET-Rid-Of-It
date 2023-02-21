@@ -1,13 +1,13 @@
 <!-- {{ model | json }} -->
 <div class="container">
-    <div [hidden]="submitted">
+    <!-- <div [hidden]="submitted"> -->
         <h1>Liberate a new Item!</h1>
         <form (ngSubmit)="onSubmit()" #itemForm="ngForm">
             <div class="form-group">
                 <label for="name">Liberator Name</label>
                 <input type="text" class="form-control" id="name"
                     required
-                    [(ngModel)]="model.name" name="name" #name="ngModel">
+                    [(ngModel)]="model2.name" name="name" #name="ngModel">
                 <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
                     Liberator Name is required
                 </div>        
@@ -16,28 +16,28 @@
             <div class="form-group">
                 <label for="reasonForRemoval">Reason for Liberation</label>
                 <input type="text"  class="form-control" id="reasonForRemoval"
-                        [(ngModel)]="model.reasonForRemoval" name="reasonForRemoval">
+                        [(ngModel)]="model2.reasonForRemoval" name="reasonForRemoval">
             </div>
 
             <div class="form-group">
                 <label for="age">Age (in years)</label>
                 <input type="text"  class="form-control" id="age"
-                    [(ngModel)]="model.age" name="age">
+                    [(ngModel)]="model2.age" name="age">
             </div>
 
             <div class="form-group">
                 <label for="comments">Comments</label>
                 <input type="text"  class="form-control" id="comments"
-                    [(ngModel)]="model.comments" name="comments">
+                    [(ngModel)]="model2.comments" name="comments">
             </div>
 
             <div class="form-group">
                 <label for="removalMethod">Liberation Method</label>
                 <select class="form-control"  id="removalMethod"
                         required
-                        [(ngModel)]="model.removalMethod" name="removalMethod"
+                        [(ngModel)]="model2.removalMethod" name="removalMethod"
                         #removalMethod="ngModel">
-                    <option *ngFor="let removalMethod of removalMethods" 
+                    <option *ngFor="let removalMethod of removalMethods2" 
                     [value]="removalMethod">{{removalMethod}}</option>
                 </select>
                 <div [hidden]="removalMethod.valid || removalMethod.pristine"
@@ -49,8 +49,8 @@
             [disabled]="!itemForm.valid">Submit
             </button>
             <button type="button" class="btn btn-default"
-            (click)="newItem(); itemForm.reset()">New Liberator
+            (click)="itemForm.reset()">Reset Form
             </button>
         </form>
-    </div>
+    <!-- </div> -->
 </div>

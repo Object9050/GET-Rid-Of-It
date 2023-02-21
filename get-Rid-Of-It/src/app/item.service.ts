@@ -20,7 +20,6 @@ export class ItemService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-
   
   /** GET: get all items from the server */
   getItems(): Observable<Item[]> {
@@ -68,6 +67,12 @@ export class ItemService {
       tap(_ => this.log(`Deleted item id: ${id}`)),
       catchError(this.handleError<Item>('deleteItem'))
     );
+  }
+  
+  /** Generates an ID depending on the length of the items array 
+    * Description: If items.length > 0 ... do Math.max... else set ID as '1'. */
+  genId(items: Item[]): string {
+    return items.length > 0 ? (Math.max(...items.map(item => +item.id)) + 1).toString() : '1';
   }
   
   /**

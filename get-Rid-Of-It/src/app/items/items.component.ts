@@ -38,23 +38,12 @@ export class ItemsComponent implements OnInit {
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    const id = this.genId(this.items);
+    const id = this.itemService.genId(this.items);
     this.itemService.addItem({ id, name } as Item)
       .subscribe(newItem => {
         this.items.push(newItem);
       });
   }
-
-  /** Generates an ID depending on the length of the items array 
-  * Description: If items.length > 0 ... do Math.max... else set ID as '1'. */
-  genId(items: Item[]): string {
-    return items.length > 0 ? (Math.max(...items.map(item => +item.id)) + 1).toString() : '1';
-  }
-
-  /** OLD-AS-NUMBER // Generate an ID for each new Item */
-  // genId(items: Item[]): number {
-  //   return items.length > 0 ? Math.max(...items.map(item => item.id)) + 1 : 1;
-  // }
 
   /** Subscribes to the DELETE request of ItemService */
   deleteItem(item: Item): void {
