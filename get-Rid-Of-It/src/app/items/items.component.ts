@@ -46,8 +46,7 @@ export class ItemsComponent implements OnInit {
   }
 
   /** Generates an ID depending on the length of the items array 
-  * Description: If items.length > 0 ... do Math.max... else set ID as '1'
-  */
+  * Description: If items.length > 0 ... do Math.max... else set ID as '1'. */
   genId(items: Item[]): string {
     return items.length > 0 ? (Math.max(...items.map(item => +item.id)) + 1).toString() : '1';
   }
