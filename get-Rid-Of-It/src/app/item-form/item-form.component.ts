@@ -16,12 +16,10 @@ export class ItemFormComponent {
   constructor(private itemService: ItemService) { }
 
   removalMethods = ['Donated', 'Recycled', 'Sold', 'Trashed'];
-  
   model = new ItemClass('', 'Dead Plant', 'It lived a short life full of empty watercans',
    0.2, 'Give me your plants if you hate them', this.removalMethods[1]);
 
   removalMethods2 = Object.values(RemovalMethod);
-
   model2: Item = {
     id: '',
     name: '',
@@ -55,7 +53,18 @@ export class ItemFormComponent {
       .subscribe(item => {this.items.push(item)});
   }
   
-  newItem() {
-    this.model = new ItemClass('', '', '', 0, '', '');
-  }
+  // newItem() {
+  //   this.model = new ItemClass('', '', '', 0, '', '');
+  // }
+
+  // newItem2() {
+  //   this.model2 = {
+  //     id: '',
+  //     name: '',
+  //     reasonForRemoval: '',
+  //     age: 0,
+  //     comments: '',
+  //     removalMethod: RemovalMethod.Trashed
+  //   }
+  // };
 }
