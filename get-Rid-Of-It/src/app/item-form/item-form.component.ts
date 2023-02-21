@@ -21,4 +21,8 @@ export class ItemFormComponent {
   submitted = false;
 
   onSubmit(): void { this.submitted = true; }
+
+  newItem() {
+    this.model = new Item('42', '', '', 9, '', '');
+  }
 }
