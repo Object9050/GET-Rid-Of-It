@@ -1,10 +1,12 @@
 <div *ngIf="item">
     <h2>Detailansicht {{item.name | uppercase}}</h2>
-    <div>id: {{item.id}}</div>
+    <div>
+      id: {{item.id}}
+    </div>
     <div>
       <label for="item-name">Gegenstand: </label>
       <input id="item-name" [(ngModel)]="item.name" placeholder="name">
     </div>
-  </div>
-  <button type="button" (click)="goBack()">go back</button>
-  <button type="button" (click)="save()">save</button>
+    <button type="button" (click)="goBack()">go back</button>
+    <button type="button" (click)="save()">save</button>
+</div>
