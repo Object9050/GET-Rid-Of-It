@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Item } from './item.model';
+import { ItemClass } from './item.model.class';
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -41,7 +42,7 @@ export class ItemService {
     }
     
   /** POST: add a new item to the server */
-  addItem(item: Item): Observable<Item> {
+  addItem(item: ItemClass): Observable<Item> {
     // const items = this.getItems();
     // item.id = this.genId(items);
     return this.http.post<Item>(this.itemsUrl, item, this.httpOptions)
