@@ -11,7 +11,7 @@ export class ItemsComponent implements OnInit {
   items: Item[] = [];
   newItem: any = {};
   selectedItem?: Item;
-
+  
   /** takes an instance of the ItemService as a parameter and assigns it to a 
    * private property of the class. It's used for dependency injection in Angular. */
   constructor(private itemService: ItemService) { }

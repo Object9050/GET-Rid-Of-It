@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../item.model';
 import { ItemService } from '../item.service';
+import * as quotes from '../quotes.json';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +10,8 @@ import { ItemService } from '../item.service';
 })
 export class DashboardComponent implements OnInit {
   items: Item[] = [];
+  quotes: any[] = quotes;
+  randomIndex: number = Math.floor(Math.random() * this.quotes.length);
 
   constructor(private itemService: ItemService) { }
 
