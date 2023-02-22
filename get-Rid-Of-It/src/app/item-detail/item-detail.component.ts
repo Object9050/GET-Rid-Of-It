@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -11,7 +11,7 @@ import { ItemService } from '../item.service';
   styleUrls: ['./item-detail.component.css']
 })
 export class ItemDetailComponent {
-  item?: Item;
+  item: any = {};
   removalMethods = Object.values(RemovalMethod);
 
   constructor(

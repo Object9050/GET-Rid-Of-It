@@ -1,5 +1,11 @@
 <div class="container">
-    <!-- <div [hidden]="submitted"> -->
+    <div style="display: flex; justify-content: center;">
+        <button type="button" (click)="getRidOfIt()" style="font-weight: bold; 
+        font-size: 24px; background-color: green; color: white;">
+        GET-Rid-Of-It!
+        </button>
+    </div>
+    <div [hidden]="!liberate">
         <h1>Liberate a new Item!</h1>
         <form (ngSubmit)="onSubmit()" #itemForm="ngForm">
             <div class="form-group">
@@ -53,6 +59,6 @@
             (click)="itemForm.reset()">Reset Form
             </button>
         </form>
-    <!-- </div> -->
+        <p>What is being sent to the backend: {{ model2 | json }}</p>
+    </div>
 </div>
-<p>What is being sent to the backend: {{ model2 | json }}</p>

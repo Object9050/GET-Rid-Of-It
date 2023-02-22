@@ -29,7 +29,7 @@ export class ItemFormComponent {
     removalMethod: RemovalMethod.Trashed
   }
 
-  // submitted = false;
+  liberate = false;
 
     /** Calls getItems() when component has been initialized
    * (So called ngOnInit-lifecycle hook) */  
@@ -52,6 +52,8 @@ export class ItemFormComponent {
     this.itemService.addItem(this.model2)
       .subscribe(item => {this.items.push(item)});
   }
+
+  getRidOfIt() { this.liberate = !this.liberate; }
   
   // newItem() {
   //   this.model = new ItemClass('', '', '', 0, '', '');

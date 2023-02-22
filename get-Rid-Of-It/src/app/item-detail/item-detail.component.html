@@ -1,34 +1,54 @@
-<div *ngIf="item">
-    <h2>Detail View {{item.name | uppercase}}</h2>
-    <div>
-      ID: {{item.id}}
-    </div>
-    <div>
-      <label for="item-name">Liberator: </label>
-      <input id="item-name" [(ngModel)]="item.name" placeholder="name">
-    </div>
-    <div>
-      <label for="item-reasonForRemoval">Reason for Liberation: </label>
-      <input id="item-reasonForRemoval" [(ngModel)]="item.reasonForRemoval" placeholder="Reason for Liberation">
-    </div>
-    <div>
-      <label for="item-age">Age (in years): </label>
-      <input type="number" id="item-age" [(ngModel)]="item.age" placeholder="age">
-    </div>
-    <div>
-      <label for="item-comments">Comments: </label>
-      <input id="item-comments" [(ngModel)]="item.comments" placeholder="Comments">
-    </div>
-    <div class="form-group">
-      <label for="removalMethod">Liberation Method: </label>
-      <select class="form-control" id="removalMethod"
-              required
-              [(ngModel)]="item.removalMethod" name="removalMethod"
-              #removalMethod="ngModel">
-          <option *ngFor="let removalMethod of removalMethods" 
-          [value]="removalMethod">{{removalMethod}}</option>
-      </select>
-  </div>
-    <button type="button" (click)="goBack()">go back</button>
-    <button type="button" (click)="save()">save</button>
+<div class="container">
+  <!-- <div [hidden]="submitted"> -->
+      <h2>Detail View {{item.name | uppercase}}</h2>
+      <form (ngSubmit)="save()" #itemForm="ngForm">
+          <div class="form-group">
+              <label for="name">Liberator Name</label>
+              <input type="text" class="form-control" id="name"
+                  required
+                  [(ngModel)]="item.name" name="name" #name="ngModel">
+              <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                  Liberator Name is required
+              </div>        
+          </div>
+          <br>
+          <div class="form-group">
+              <label for="reasonForRemoval">Reason for Liberation</label>
+              <input type="text"  class="form-control" id="reasonForRemoval"
+                      [(ngModel)]="item.reasonForRemoval" name="reasonForRemoval">
+          </div>
+          <br>
+          <div class="form-group">
+              <label for="age">Age (in years)</label>
+              <br>
+              <input type="number"  class="form-control" id="age"
+                  [(ngModel)]="item.age" name="age">
+          </div>
+          <br>
+          <div class="form-group">
+              <label for="comments">Comments</label>
+              <input type="text"  class="form-control" id="comments"
+                  [(ngModel)]="item.comments" name="comments">
+          </div>
+          <p></p>
+          <div class="form-group">
+              <label for="removalMethod">Liberation Method </label>
+              <br>
+              <select class="form-control"  id="removalMethod"
+                      required
+                      [(ngModel)]="item.removalMethod" name="removalMethod"
+                      #removalMethod="ngModel">
+                  <option *ngFor="let removalMethod of removalMethods" 
+                  [value]="removalMethod">{{removalMethod}}</option>
+              </select>
+              <div [hidden]="removalMethod.valid || removalMethod.pristine"
+              class="alert alert-danger"> Removal Method is required
+              </div>
+          </div>
+          <br>
+          <button type="button" (click)="goBack()">go back</button>
+          <button type="button" (click)="save()">save</button>
+      </form>
+  <!-- </div> -->
 </div>
+<p>What is being sent to the backend: {{ item | json }}</p>
