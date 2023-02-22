@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 import { Item } from './item.model';
 import { ItemClass } from './item.model.class';
@@ -41,7 +41,7 @@ export class ItemService {
     }
     
   /** POST: add a new item to the server */
-  addItem(item: ItemClass): Observable<Item> {
+  addItem(item: Item): Observable<Item> {
     // const items = this.getItems();
     // item.id = this.genId(items);
     return this.http.post<Item>(this.itemsUrl, item, this.httpOptions)
@@ -62,7 +62,7 @@ export class ItemService {
   
   /** DELETE: delete an item from the server */
   deleteItem(id: string): Observable<Item> {
-    return this.http.delete<Item>(`${this.itemsUrl}/${id}`, this.httpOptions)
+    return this.http.delete<Item>(`${this.itemsUrl}/${id}`)
     .pipe(
       tap(_ => this.log(`Deleted item id: ${id}`)),
       catchError(this.handleError<Item>('deleteItem'))

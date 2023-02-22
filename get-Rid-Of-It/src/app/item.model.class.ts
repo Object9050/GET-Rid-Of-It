@@ -1,3 +1,4 @@
+// Bot being used - can be deleted (with testing)
 export class ItemClass {
     
   constructor(
