@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 // import { ItemClass } from '../item.model.class';
 import { Item, RemovalMethod } from '../item.model'
@@ -12,8 +14,23 @@ import { ItemService } from '../item.service';
 
 export class ItemFormComponent {
   items: Item[]= []
+  item?: Item;
 
-  constructor(private itemService: ItemService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location,
+    private itemService: ItemService
+  ) { }
+
+  getItem(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.itemService.getItem(id)
+      .subscribe(itemFromServer => this.item = itemFromServer);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
 
   // removalMethods = ['Donated', 'Recycled', 'Sold', 'Trashed'];
   // model = new ItemClass('', 'Dead Plant', 'It lived a short life full of empty watercans',
