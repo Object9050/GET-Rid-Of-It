@@ -11,19 +11,20 @@
                     Liberator Name is required
                 </div>        
             </div>
-
+            <br>
             <div class="form-group">
                 <label for="reasonForRemoval">Reason for Liberation</label>
                 <input type="text"  class="form-control" id="reasonForRemoval"
                         [(ngModel)]="model2.reasonForRemoval" name="reasonForRemoval">
             </div>
-
+            <br>
             <div class="form-group">
                 <label for="age">Age (in years)</label>
-                <input type="text"  class="form-control" id="age"
+                <br>
+                <input type="number"  class="form-control" id="age"
                     [(ngModel)]="model2.age" name="age">
             </div>
-
+            <br>
             <div class="form-group">
                 <label for="comments">Comments</label>
                 <input type="text"  class="form-control" id="comments"
@@ -32,6 +33,7 @@
             <p></p>
             <div class="form-group">
                 <label for="removalMethod">Liberation Method </label>
+                <br>
                 <select class="form-control"  id="removalMethod"
                         required
                         [(ngModel)]="model2.removalMethod" name="removalMethod"
@@ -43,7 +45,7 @@
                 class="alert alert-danger"> Removal Method is required
                 </div>
             </div>
-
+            <br>
             <button type="submit" class="btn btn-success" 
             [disabled]="!itemForm.valid">Submit
             </button>

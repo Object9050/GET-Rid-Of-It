@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Item } from '../item.model'
+import { Item, RemovalMethod } from '../item.model'
 import { ItemService } from '../item.service';
 
 @Component({
@@ -12,6 +12,7 @@ import { ItemService } from '../item.service';
 })
 export class ItemDetailComponent {
   item?: Item;
+  removalMethods = Object.values(RemovalMethod);
 
   constructor(
     private route: ActivatedRoute,

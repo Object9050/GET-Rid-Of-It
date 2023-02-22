@@ -35,8 +35,8 @@ export class ItemService {
     const url = `${this.itemsUrl}/${id}`;
     return this.http.get<Item>(url)
     .pipe(
-      tap(_ => this.log(`Fetched item id: ${id}`)),
-      catchError(this.handleError<Item>(`getItem id: ${id}`))
+      tap(_ => this.log(`Fetched item ID: ${id}`)),
+      catchError(this.handleError<Item>(`getItem ID: ${id}`))
       );
     }
     
@@ -46,7 +46,7 @@ export class ItemService {
     // item.id = this.genId(items);
     return this.http.post<Item>(this.itemsUrl, item, this.httpOptions)
     .pipe(
-      tap((newItem: Item) => this.log(`Added item w/ id: ${newItem.id}`)),
+      tap((newItem: Item) => this.log(`Added item w/ ID: ${newItem.id}`)),
       catchError(this.handleError<Item>('addItem'))
     );
   }
@@ -55,7 +55,7 @@ export class ItemService {
   updateItem(item: Item): Observable<Item> {
     return this.http.put<Item>(`${this.itemsUrl}/${item.id}`, item, this.httpOptions)
     .pipe(
-      tap(_ => this.log(`Updated item id=${item.id}`)),
+      tap(_ => this.log(`Updated item ID: ${item.id}`)),
       catchError(this.handleError<any>('updateItem'))
     );
   }
@@ -64,7 +64,7 @@ export class ItemService {
   deleteItem(id: string): Observable<Item> {
     return this.http.delete<Item>(`${this.itemsUrl}/${id}`)
     .pipe(
-      tap(_ => this.log(`Deleted item id: ${id}`)),
+      tap(_ => this.log(`Deleted item ID: ${id}`)),
       catchError(this.handleError<Item>('deleteItem'))
     );
   }
