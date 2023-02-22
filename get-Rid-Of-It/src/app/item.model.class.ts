@@ -1,4 +1,5 @@
-// Bot being used - can be deleted (with testing)
+// Not being used - stays for future reference
+// Was used as an alternative to add a new item (model) in item-formComponent.
 export class ItemClass {
     
   constructor(
@@ -13,11 +14,4 @@ export class ItemClass {
     ) { }
     
   }
-  
-//  export enum RemovalMethod {
-//     Donated = "donated",
-//     Recycled = "recycled",
-//     Sold = "sold",
-//     Trashed = "trashed",
-//   }
   
