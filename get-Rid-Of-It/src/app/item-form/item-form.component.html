@@ -8,8 +8,10 @@
         <div style="font-size: 60px; margin-left: 8px;">&larr;</div>
     </div>
     <div [hidden]="!liberate">
-        <h1>Liberate a new Item!</h1>
-        <form (ngSubmit)="onSubmit()" #itemForm="ngForm">
+        <div style="text-align: center;">
+            <h1>Liberate a new Item!</h1>
+        </div>
+            <form (ngSubmit)="onSubmit()" #itemForm="ngForm">
             <div class="form-group">
                 <label for="name">Liberator Name</label>
                 <input type="text" class="form-control" id="name"
