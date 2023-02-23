@@ -41,8 +41,6 @@ export class ItemService {
     
   /** POST: add a new item to the server */
   addItem(item: Item): Observable<Item> {
-    // const items = this.getItems();
-    // item.id = this.genId(items);
     return this.http.post<Item>(this.itemsUrl, item, this.httpOptions)
     .pipe(
       tap((newItem: Item) => this.log(`Added item w/ ID: ${newItem.id}`)),
