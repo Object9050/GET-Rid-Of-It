@@ -1,9 +1,11 @@
 <div class="container">
-    <div style="display: flex; justify-content: center;">
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <div style="font-size: 60px; margin-right: 20px;">&rarr;</div>
         <button type="button" (click)="getRidOfIt()" style="font-weight: bold; 
-        font-size: 24px; background-color: green; color: white;">
-        GET-Rid-Of-It!
+                font-size: 24px; background-color: green; color: white;">
+                GET-Rid-Of-It!
         </button>
+        <div style="font-size: 60px; margin-left: 8px;">&larr;</div>
     </div>
     <div [hidden]="!liberate">
         <h1>Liberate a new Item!</h1>
