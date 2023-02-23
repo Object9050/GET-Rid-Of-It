@@ -32,19 +32,18 @@
           </div>
           <p></p>
           <div class="form-group">
-              <label for="removalMethod">Liberation Method </label>
-              <br>
-              <select class="form-control"  id="removalMethod"
-                      required
-                      [(ngModel)]="item.removalMethod" name="removalMethod"
-                      #removalMethod="ngModel">
-                  <option *ngFor="let removalMethod of removalMethods" 
-                  [value]="removalMethod">{{removalMethod}}</option>
-              </select>
-              <div [hidden]="removalMethod.valid || removalMethod.pristine"
-              class="alert alert-danger"> Removal Method is required
-              </div>
-          </div>
+            <label for="removalMethod" style="font-size: 20px;">Liberation Method</label>
+            <br>
+            <select class="form-control" id="removalMethod"
+                    required
+                    [(ngModel)]="item.removalMethod" name="removalMethod"
+                    #removalMethod="ngModel" style="font-size: 1rem; height: 2rem;">
+              <option *ngFor="let removalMethod of removalMethods" 
+                      [value]="removalMethod">{{removalMethod}}</option>
+            </select>
+            <div [hidden]="removalMethod.valid || removalMethod.pristine"
+                 class="alert alert-danger">Removal Method is required</div>
+            </div>
           <br>
           <button type="button" (click)="goBack()">go back</button>
           <button type="button" (click)="save()">save</button>
