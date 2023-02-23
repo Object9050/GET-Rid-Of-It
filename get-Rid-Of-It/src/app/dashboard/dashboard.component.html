@@ -1,3 +1,6 @@
+<h2>"{{ quotes[randomIndex].quote }}"</h2>
+<h2>- {{ quotes[randomIndex].author }}</h2>
+<app-item-form></app-item-form>
 <h2>The latest Liberators</h2>
 <div class="items-menu">
   <a *ngFor="let item of items"
@@ -5,6 +8,3 @@
     {{item.name}}
   </a>
 </div>
-<h2>"{{ quotes[randomIndex].quote }}"</h2>
-<h2>- {{ quotes[randomIndex].author }}</h2>
-<app-item-form></app-item-form>

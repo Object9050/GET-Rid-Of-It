@@ -4,7 +4,6 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 import { Item } from './item.model';
-import { ItemClass } from './item.model.class';
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -74,6 +73,11 @@ export class ItemService {
   genId(items: Item[]): string {
     return items.length > 0 ? (Math.max(...items.map(item => +item.id)) + 1).toString() : '1';
   }
+
+  /** Log an ItemService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add(`ItemService: ${message}`);
+  }
   
   /**
    * Handle Http operation that failed.
@@ -96,9 +100,5 @@ export class ItemService {
     };
   }
     
-  /** Log an ItemService message with the MessageService */
-  private log(message: string) {
-    this.messageService.add(`ItemService: ${message}`);
-  }
 }
   

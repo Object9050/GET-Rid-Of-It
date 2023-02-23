@@ -15,10 +15,6 @@ export class ItemFormComponent {
 
   constructor(private itemService: ItemService) { }
 
-  // removalMethods = ['Donated', 'Recycled', 'Sold', 'Trashed'];
-  // model = new ItemClass('', 'Dead Plant', 'It lived a short life full of empty watercans',
-  //  0.2, 'Give me your plants if you hate them', this.removalMethods[1]);
-
   removalMethods2 = Object.values(RemovalMethod);
   model2: Item = {
     id: '',
@@ -28,41 +24,45 @@ export class ItemFormComponent {
     comments: '',
     removalMethod: RemovalMethod.Trashed
   }
-
+  
   liberate = false;
-
-    /** Calls getItems() when component has been initialized
+  
+  /** Calls getItems() when component has been initialized
    * (So called ngOnInit-lifecycle hook) */  
   ngOnInit(): void {
     this.getItems();
   }
-
+  
   /** Retrieves the items from the server by calling the 
    * getItems method of the itemService. The items returned 
    * by the server are then assigned to the items property 
    * of the component. */
   getItems(): void {
     this.itemService.getItems()
-      .subscribe(itemsFromServer => this.items = itemsFromServer);
+    .subscribe(itemsFromServer => this.items = itemsFromServer);
   }
-
+  
   onSubmit() {
     // this.submitted = true;
     this.model2.id = this.itemService.genId(this.items)
     this.itemService.addItem(this.model2)
-      .subscribe(item => {this.items.push(item)});
+    .subscribe(item => {this.items.push(item)});
   }
-
+  
   getRidOfIt() { this.liberate = !this.liberate; }
+
+  // removalMethods = ['Donated', 'Recycled', 'Sold', 'Trashed'];
+  // model = new ItemClass('', 'Dead Plant', 'It lived a short life full of empty watercans',
+  //  0.2, 'Give me your plants if you hate them', this.removalMethods[1]);
   
   // newItem() {
-  //   this.model = new ItemClass('', '', '', 0, '', '');
-  // }
-
-  // newItem2() {
-  //   this.model2 = {
-  //     id: '',
-  //     name: '',
+    //   this.model = new ItemClass('', '', '', 0, '', '');
+    // }
+    
+    // newItem2() {
+      //   this.model2 = {
+        //     id: '',
+        //     name: '',
   //     reasonForRemoval: '',
   //     age: 0,
   //     comments: '',
